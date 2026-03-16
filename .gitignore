@@ -1,0 +1,34 @@
+# General
+.DS_Store
+.vscode/
+.idea/
+*.log
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+*.env
+.pytest_cache/
+coverage/
+htmlcov/
+
+# Node/Frontend
+node_modules/
+dist/
+build/
+.npm/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.docker/
+tasks
