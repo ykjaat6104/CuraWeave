@@ -6,7 +6,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.111+-009688.svg)
 ![Docker](https://img.shields.io/badge/docker-compose-2496ed.svg)
 
-> **Production-grade SaaS for modern clinics.** Automate patient triage, streamline scheduling, and enhance care delivery with AI-powered workflows.
+> **A multi-tenant, AI-orchestrated Clinic Operations Platform.** Leverages **stateful LangGraph agents** to automate patient onboarding, intelligent symptom routing, appointment management, marketing workflows, and subscription billing.
 
 ---
 
