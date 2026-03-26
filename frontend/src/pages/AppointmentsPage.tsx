@@ -15,7 +15,7 @@ interface Appointment {
 }
 
 const STATUS_CONFIG: Record<string, { label: string; class: string }> = {
-  scheduled: { label: 'Scheduled', class: 'bg-blue-500/20 text-blue-400 border-blue-500/30' },
+  scheduled: { label: 'Scheduled', class: 'bg-purple-500/20 text-purple-300 border-purple-500/30' },
   confirmed: { label: 'Confirmed', class: 'bg-brand-500/20 text-brand-400 border-brand-500/30' },
   completed: { label: 'Completed', class: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30' },
   cancelled: { label: 'Cancelled', class: 'bg-red-500/20 text-red-400 border-red-500/30' },

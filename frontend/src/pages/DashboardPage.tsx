@@ -57,7 +57,7 @@ export default function DashboardPage() {
   const statCards = stats
     ? [
         { icon: Users, label: 'Total Patients', value: stats.total_patients.toLocaleString(), color: 'brand' },
-        { icon: Calendar, label: "Today's Appointments", value: stats.appointments_today, color: 'blue' },
+        { icon: Calendar, label: "Today's Appointments", value: stats.appointments_today, color: 'purple' },
         { icon: Activity, label: 'No-Show Rate', value: `${stats.no_show_rate}%`, color: 'amber' },
         { icon: Brain, label: 'AI Triage Sessions', value: stats.triage_sessions, color: 'purple' },
         { icon: MessageSquare, label: 'Messages This Month', value: stats.messages_sent_this_month.toLocaleString(), color: 'green' },
@@ -67,7 +67,7 @@ export default function DashboardPage() {
 
   const colorMap: Record<string, string> = {
     brand: 'text-brand-400 bg-brand-500/20',
-    blue: 'text-blue-400 bg-blue-500/20',
+    blue: 'text-purple-300 bg-purple-500/20',
     amber: 'text-amber-400 bg-amber-500/20',
     purple: 'text-purple-400 bg-purple-500/20',
     green: 'text-emerald-400 bg-emerald-500/20',

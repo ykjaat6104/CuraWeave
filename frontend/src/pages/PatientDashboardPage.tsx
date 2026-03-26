@@ -37,7 +37,7 @@ export default function PatientDashboardPage() {
           <h1 className="text-2xl font-bold text-white">Hello, {user?.full_name?.split(' ')[0] || 'Patient'}</h1>
           <p className="text-slate-400">Here's your health overview for today.</p>
         </div>
-        <button className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-emerald-500/20">
+        <button className="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-amber-500/20">
           <Plus size={18} />
           <span>Book Appointment</span>
         </button>
@@ -47,11 +47,11 @@ export default function PatientDashboardPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden group hover:border-slate-700 transition-colors">
           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-            <Calendar size={64} className="text-emerald-500" />
+            <Calendar size={64} className="text-amber-500" />
           </div>
           <div className="relative z-10">
-            <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center mb-3">
-              <Calendar size={20} className="text-emerald-500" />
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-3">
+              <Calendar size={20} className="text-amber-500" />
             </div>
             <p className="text-slate-400 text-sm">Next Appointment</p>
             <h3 className="text-xl font-bold text-white mt-1">None Scheduled</h3>
@@ -60,11 +60,11 @@ export default function PatientDashboardPage() {
 
         <div className="bg-slate-900 border border-slate-800 rounded-xl p-5 relative overflow-hidden group hover:border-slate-700 transition-colors">
           <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-            <MessageSquare size={64} className="text-blue-500" />
+            <MessageSquare size={64} className="text-amber-500" />
           </div>
           <div className="relative z-10">
-            <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center mb-3">
-              <MessageSquare size={20} className="text-blue-500" />
+            <div className="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center mb-3">
+              <MessageSquare size={20} className="text-amber-500" />
             </div>
             <p className="text-slate-400 text-sm">New Messages</p>
             <h3 className="text-xl font-bold text-white mt-1">2 Unread</h3>
@@ -92,7 +92,7 @@ export default function PatientDashboardPage() {
             <Calendar size={18} className="text-slate-400" />
             Recent Appointments
           </h2>
-          <button className="text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
+          <button className="text-xs font-medium text-amber-300 hover:text-amber-200 transition-colors">
             View All
           </button>
         </div>
@@ -113,7 +113,7 @@ export default function PatientDashboardPage() {
                       </div>
                    </div>
                    <span className={`px-2 py-1 rounded text-xs font-medium ${
-                      apt.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-500' : 
+                       apt.status === 'confirmed' ? 'bg-amber-500/10 text-amber-400' : 
                       apt.status === 'pending' ? 'bg-amber-500/10 text-amber-500' : 'bg-slate-700 text-slate-300'
                    }`}>
                       {apt.status}

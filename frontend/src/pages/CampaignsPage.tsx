@@ -21,7 +21,7 @@ const STATUS_ICONS: Record<string, React.ReactNode> = {
   draft: <Clock size={14} className="text-slate-400" />,
   running: <Play size={14} className="text-brand-400" />,
   completed: <CheckCircle size={14} className="text-emerald-400" />,
-  scheduled: <Clock size={14} className="text-blue-400" />,
+  scheduled: <Clock size={14} className="text-purple-300" />,
 }
 
 export default function CampaignsPage() {

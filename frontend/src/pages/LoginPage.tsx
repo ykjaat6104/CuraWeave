@@ -30,14 +30,14 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-200">
+    <div className="flex min-h-screen theme-surface text-slate-200">
       {/* Left: Branding */}
-      <div className="hidden lg:flex w-1/2 bg-indigo-600 relative overflow-hidden items-center justify-center p-12">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 to-violet-700 opacity-90 z-10" />
+      <div className="hidden lg:flex w-1/2 doctor-gradient relative overflow-hidden items-center justify-center p-12">
+        <div className="absolute inset-0 bg-black/10 z-10" />
         <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-20 z-0" />
         
         {/* Animated Glow */}
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-400 rounded-full blur-3xl opacity-20 animate-pulse" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-purple-300 rounded-full blur-3xl opacity-20 animate-pulse" />
         <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-white rounded-full blur-[100px] opacity-[0.05] animate-spin-slow" />
 
         <div className="relative z-20 max-w-lg text-center">
@@ -47,29 +47,32 @@ export default function LoginPage() {
           <h1 className="text-5xl font-bold text-white mb-6 leading-tight">
             Streamline Your Practice.
           </h1>
-          <p className="text-lg text-indigo-100/80 mb-8 leading-relaxed">
+          <p className="text-lg text-purple-100/80 mb-8 leading-relaxed">
             Manage appointments, automate patient outreach, and deliver exceptional care with our AI-powered platform.
           </p>
           
           <div className="flex gap-4 justify-center">
              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 w-32">
                 <span className="block text-2xl font-bold text-white mb-1">98%</span>
-                <span className="text-xs text-indigo-200">Patient Satisfaction</span>
+                <span className="text-xs text-purple-200">Patient Satisfaction</span>
              </div>
              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 w-32">
                 <span className="block text-2xl font-bold text-white mb-1">24/7</span>
-                <span className="text-xs text-indigo-200">Automated Triage</span>
+                <span className="text-xs text-purple-200">Automated Triage</span>
              </div>
              <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/10 w-32">
                 <span className="block text-2xl font-bold text-white mb-1">3x</span>
-                <span className="text-xs text-indigo-200">Faster Booking</span>
+                <span className="text-xs text-purple-200">Faster Booking</span>
              </div>
           </div>
         </div>
       </div>
 
       {/* Right: Form */}
-      <div className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-12 relative">
+      <div
+        className="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-12 relative"
+        style={{ backgroundColor: 'var(--common-bg)' }}
+      >
         <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03] pointer-events-none" />
         
         <div className="w-full max-w-md space-y-8 relative z-10">
@@ -81,28 +84,28 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-indigo-400 transition-colors">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-purple-300 transition-colors">
                   <Mail size={18} />
                 </div>
                 <input
                   type="email"
                   required
                   placeholder="name@clinic.com"
-                  className="w-full pl-11 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-200 placeholder-slate-500 transition-all outline-none"
+                  className="w-full pl-11 pr-4 py-3 bg-zinc-900 border border-zinc-700 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-200 placeholder-slate-500 transition-all outline-none"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
               </div>
 
               <div className="relative group">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-indigo-400 transition-colors">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-500 group-focus-within:text-purple-300 transition-colors">
                   <Lock size={18} />
                 </div>
                 <input
                   type="password"
                   required
                   placeholder="••••••••"
-                  className="w-full pl-11 pr-4 py-3 bg-slate-900 border border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 text-slate-200 placeholder-slate-500 transition-all outline-none"
+                  className="w-full pl-11 pr-4 py-3 bg-zinc-900 border border-zinc-700 rounded-xl focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-200 placeholder-slate-500 transition-all outline-none"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
@@ -111,16 +114,16 @@ export default function LoginPage() {
 
             <div className="flex items-center justify-between text-sm">
               <label className="flex items-center gap-2 text-slate-400 cursor-pointer hover:text-slate-300">
-                <input type="checkbox" className="w-4 h-4 rounded border-slate-700 bg-slate-800 text-indigo-500 focus:ring-indigo-500/20 focus:ring-offset-0" />
+                <input type="checkbox" className="w-4 h-4 rounded border-zinc-700 bg-zinc-900 text-purple-500 focus:ring-purple-500/20 focus:ring-offset-0" />
                 Remember me
               </label>
-              <a href="#" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">Forgot password?</a>
+              <a href="#" className="text-purple-300 hover:text-purple-200 font-medium transition-colors">Forgot password?</a>
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group"
+              className="w-full bg-purple-600 hover:bg-purple-500 text-white font-medium py-3 rounded-xl transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed group"
             >
               {loading ? (
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -136,7 +139,7 @@ export default function LoginPage() {
           <div className="text-center pt-4">
              <p className="text-slate-500 text-sm">
                 Don't have an account?{' '}
-                <Link to="/doctor/register" className="text-indigo-400 hover:text-indigo-300 font-medium transition-colors">
+                <Link to="/doctor/register" className="text-purple-300 hover:text-purple-200 font-medium transition-colors">
                    Create Clinic Account
                 </Link>
              </p>

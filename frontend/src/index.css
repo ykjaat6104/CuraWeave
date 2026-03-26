@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --common-bg: #070B14;
+  }
+
   * {
     box-sizing: border-box;
   }
   body {
-    @apply bg-slate-950 text-slate-100 font-sans antialiased;
+    background-color: var(--common-bg);
+    @apply text-slate-100 font-sans antialiased;
   }
   ::-webkit-scrollbar {
     width: 6px;
@@ -40,4 +45,23 @@
   .badge-medium { @apply bg-amber-500/20 text-amber-400 border border-amber-500/30; }
   .badge-high { @apply bg-orange-500/20 text-orange-400 border border-orange-500/30; }
   .badge-critical { @apply bg-red-500/20 text-red-400 border border-red-500/30; }
+
+  .theme-surface {
+    background-color: var(--common-bg);
+    @apply text-slate-200;
+  }
+
+  .doctor-gradient {
+    background-image:
+      radial-gradient(circle at 12% 14%, rgba(140, 99, 197, 0.3), transparent 42%),
+      radial-gradient(circle at 88% 12%, rgba(94, 64, 156, 0.34), transparent 36%),
+      linear-gradient(155deg, #110b3d 0%, #1c1450 28%, #312171 56%, #5e409c 78%, #8c63c5 100%);
+  }
+
+  .patient-gradient {
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(201, 169, 97, 0.25), transparent 38%),
+      radial-gradient(circle at 86% 16%, rgba(184, 149, 106, 0.22), transparent 34%),
+      linear-gradient(165deg, #c9a961 0%, #b8956a 100%);
+  }
 }
