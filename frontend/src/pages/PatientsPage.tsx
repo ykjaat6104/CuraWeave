@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { patientsApi } from '../services/api'
 import toast from 'react-hot-toast'
-import { Plus, Search, Phone, Mail, Tag, X, Loader2, ChevronDown, UserCheck } from 'lucide-react'
+import { Plus, Search, Phone, Mail, Tag, X, Loader2, UserCheck, KeyRound, Copy } from 'lucide-react'
 
 interface Patient {
   id: string
@@ -40,6 +40,9 @@ export default function PatientsPage() {
   const [form, setForm] = useState<PatientFormData>(EMPTY_FORM)
   const [saving, setSaving] = useState(false)
   const [tagInput, setTagInput] = useState('')
+  const [selectedPatient, setSelectedPatient] = useState<Patient | null>(null)
+  const [connectionCode, setConnectionCode] = useState('')
+  const [generatingCode, setGeneratingCode] = useState(false)
 
   const load = async (q = '') => {
     try {
@@ -84,6 +87,29 @@ export default function PatientsPage() {
 
   const removeTag = (tag: string) => {
     setForm(f => ({ ...f, tags: f.tags.filter(t => t !== tag) }))
+  }
+
+  const handleGenerateCode = async () => {
+    if (!selectedPatient) return
+    setGeneratingCode(true)
+    try {
+      const { data } = await patientsApi.generateConnectionCode(selectedPatient.id, {
+        send_email_flag: true,
+        send_sms_flag: true,
+      })
+      setConnectionCode(data.connection_code)
+      toast.success('Unique connection code generated and sent')
+    } catch (err: any) {
+      toast.error(err.response?.data?.detail || 'Failed to generate code')
+    } finally {
+      setGeneratingCode(false)
+    }
+  }
+
+  const copyCode = async () => {
+    if (!connectionCode) return
+    await navigator.clipboard.writeText(connectionCode)
+    toast.success('Code copied')
   }
 
   return (
@@ -177,7 +203,15 @@ export default function PatientsPage() {
                       {new Date(p.created_at).toLocaleDateString()}
                     </td>
                     <td className="px-5 py-4">
-                      <button className="btn-ghost text-xs py-1.5 px-3">View</button>
+                      <button
+                        className="btn-ghost text-xs py-1.5 px-3"
+                        onClick={() => {
+                          setSelectedPatient(p)
+                          setConnectionCode('')
+                        }}
+                      >
+                        View
+                      </button>
                     </td>
                   </tr>
                 ))
@@ -288,6 +322,65 @@ export default function PatientsPage() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Patient Detail Modal */}
+      {selectedPatient && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="card w-full max-w-xl">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-semibold text-white">Patient Profile</h2>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleGenerateCode}
+                  disabled={generatingCode}
+                  className="px-3 py-1.5 text-xs rounded-lg bg-purple-600 hover:bg-purple-500 text-white disabled:opacity-50"
+                >
+                  {generatingCode ? 'Generating...' : 'Generate & Send UUID'}
+                </button>
+                <button onClick={() => setSelectedPatient(null)} className="text-slate-400 hover:text-white">
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="rounded-xl border border-slate-800 bg-black/30 p-4">
+                <p className="text-white font-medium">{selectedPatient.name}</p>
+                <p className="text-slate-400 text-sm mt-1">{selectedPatient.email || 'No email'}</p>
+                <p className="text-slate-500 text-sm">{selectedPatient.phone || 'No phone'}</p>
+              </div>
+
+              <div className="rounded-xl border border-purple-700/35 bg-purple-900/10 p-4">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-sm font-semibold text-purple-200 flex items-center gap-2">
+                    <KeyRound size={16} />
+                    Doctor Connection UUID
+                  </h3>
+                </div>
+
+                {connectionCode ? (
+                  <div className="flex items-center gap-2">
+                    <div className="flex-1 px-3 py-2 rounded-lg bg-zinc-900 border border-zinc-700 text-slate-200 text-sm font-mono break-all">
+                      {connectionCode}
+                    </div>
+                    <button
+                      onClick={copyCode}
+                      className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-slate-200"
+                      title="Copy code"
+                    >
+                      <Copy size={16} />
+                    </button>
+                  </div>
+                ) : (
+                  <p className="text-xs text-slate-400">
+                    Click "Generate & Send" to create a unique patient-doctor UUID and deliver via email/SMS.
+                  </p>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
