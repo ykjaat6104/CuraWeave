@@ -1,12 +1,14 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import {
-  LayoutDashboard, Calendar, MessageSquare, LogOut, User, Activity
+  LayoutDashboard, Calendar, MessageSquare, LogOut, User, Stethoscope, Brain
 } from 'lucide-react'
 
 const navItems = [
   { to: '/patient/dashboard', icon: LayoutDashboard, label: 'Overview' },
   { to: '/patient/appointments', icon: Calendar, label: 'Appointments' },
+  { to: '/patient/doctors', icon: Stethoscope, label: 'Doctors' },
+  { to: '/patient/triage', icon: Brain, label: 'AI Triage' },
   { to: '/patient/messages', icon: MessageSquare, label: 'Messages' },
 ]
 

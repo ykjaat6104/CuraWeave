@@ -9,6 +9,9 @@ import PatientLoginPage from './pages/PatientLoginPage'
 import PatientRegisterPage from './pages/PatientRegisterPage'
 import PatientLayout from './components/PatientLayout'
 import PatientDashboardPage from './pages/PatientDashboardPage'
+import PatientAppointmentsPage from './pages/PatientAppointmentsPage'
+import PatientDoctorsPage from './pages/PatientDoctorsPage'
+import PatientTriagePage from './pages/PatientTriagePage'
 import DashboardPage from './pages/DashboardPage'
 import PatientsPage from './pages/PatientsPage'
 import AppointmentsPage from './pages/AppointmentsPage'
@@ -68,7 +71,9 @@ export default function App() {
         >
           <Route index element={<Navigate to="/patient/dashboard" />} />
           <Route path="dashboard" element={<PatientDashboardPage />} />
-          <Route path="appointments" element={<div className="text-white p-6">Appointments Feature Coming Soon</div>} />
+          <Route path="appointments" element={<PatientAppointmentsPage />} />
+          <Route path="doctors" element={<PatientDoctorsPage />} />
+          <Route path="triage" element={<PatientTriagePage />} />
           <Route path="messages" element={<div className="text-white p-6">Messages Feature Coming Soon</div>} />
         </Route>
       </Routes>

@@ -42,6 +42,12 @@ export const patientAuthApi = {
     api.post('/auth/patient/login', { email, password }),
   register: (data: any) =>
     api.post('/auth/patient/register', data),
+  connectViaCode: (code: string) =>
+    api.post('/auth/patient/connect-via-code', { code }),
+  getConnectedDoctors: () =>
+    api.get('/auth/patient/connected-doctors'),
+  triage: (message: string) =>
+    api.post('/auth/patient/triage', { message }),
 }
 
 // ─── Dashboard ─────────────────────────────────────────────────────────────
@@ -60,6 +66,8 @@ export const patientsApi = {
   create: (data: any) => api.post('/patients/', data),
   update: (id: string, data: any) => api.patch(`/patients/${id}`, data),
   delete: (id: string) => api.delete(`/patients/${id}`),
+  generateConnectionCode: (id: string, params?: { send_email_flag?: boolean; send_sms_flag?: boolean }) =>
+    api.post(`/patients/${id}/generate-connection-code`, null, { params }),
 }
 
 // ─── Appointments ─────────────────────────────────────────────────────────
