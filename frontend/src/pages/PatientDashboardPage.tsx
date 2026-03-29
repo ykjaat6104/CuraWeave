@@ -1,40 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Calendar, Clock, AlertCircle, FileText, ChevronRight, Activity, Plus, Filter, MessageSquare
 } from 'lucide-react'
 import { useAuthStore } from '../store/authStore'
-import { appointmentsApi, messagesApi } from '../services/api'
-import { toast } from 'react-hot-toast'
 
 export default function PatientDashboardPage() {
   const { user } = useAuthStore()
   const [appointments, setAppointments] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    const fetchHealthData = async () => {
-      try {
-        const { data } = await appointmentsApi.list({ limit: 5 })
-        if (Array.isArray(data)) {
-            setAppointments(data)
-        } else if (data && data.items) {
-             setAppointments(data.items)
-        }
-      } catch (error) {
-        console.error("Failed to load dashboard data", error)
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchHealthData()
-  }, [])
+  const [loading, setLoading] = useState(false)
 
   return (
     <div className="space-y-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white">Hello, {user?.full_name?.split(' ')[0] || 'Patient'}</h1>
+          <h1 className="text-2xl font-bold text-white">Hello, {(user?.name || user?.full_name || 'Patient').split(' ')[0]}</h1>
           <p className="text-slate-400">Here's your health overview for today.</p>
         </div>
         <button className="bg-amber-500 hover:bg-amber-400 text-black px-4 py-2.5 rounded-lg flex items-center gap-2 transition-colors shadow-lg shadow-amber-500/20">
@@ -109,7 +89,9 @@ export default function PatientDashboardPage() {
                       </div>
                       <div>
                          <h4 className="font-medium text-slate-200">Consultation</h4>
-                         <p className="text-xs text-slate-500">{new Date(apt.start_time).toLocaleTimeString()} • Dr. Smith</p>
+                         <p className="text-xs text-slate-500">
+                           {new Date(apt.start_time).toLocaleTimeString()} • Dr. {apt.doctor_name || 'Doctor'}
+                         </p>
                       </div>
                    </div>
                    <span className={`px-2 py-1 rounded text-xs font-medium ${
