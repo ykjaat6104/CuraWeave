@@ -10,7 +10,7 @@ const navItems = [
   { to: '/doctor/patients', icon: Users, label: 'Patients' },
   { to: '/doctor/appointments', icon: Calendar, label: 'Schedule' },
   { to: '/doctor/campaigns', icon: Megaphone, label: 'Campaigns' },
-  { to: '/doctor/ai-triage', icon: BrainCircuit, label: 'AI Triage' },
+  { to: '/doctor/triage', icon: BrainCircuit, label: 'AI Triage' },
   { to: '/doctor/messages', icon: MessageSquare, label: 'Messages' },
   { to: '/doctor/billing', icon: Receipt, label: 'Billing' },
 ]
@@ -18,6 +18,7 @@ const navItems = [
 export default function Layout() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()
+  const displayName = user?.name || user?.full_name || 'Doctor'
 
   const handleLogout = () => {
     logout()
@@ -64,10 +65,10 @@ export default function Layout() {
         <div className="p-4 border-t border-purple-900/40 bg-black/35">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center border border-purple-900/40">
-              <span className="font-bold text-slate-300">{user?.full_name?.[0] || 'D'}</span>
+              <span className="font-bold text-slate-300">{displayName[0] || 'D'}</span>
             </div>
             <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium text-white truncate">{user?.full_name || 'Dr. Smith'}</p>
+              <p className="text-sm font-medium text-white truncate">{displayName}</p>
               <p className="text-xs text-slate-500 truncate">{user?.email || 'doctor@curaweave.com'}</p>
             </div>
           </div>

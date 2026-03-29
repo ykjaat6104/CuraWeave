@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 from typing import List, Optional
+from datetime import datetime
 import uuid
 
 from app.database import get_db
@@ -12,6 +14,9 @@ from app.services.patient_service import (
 )
 from app.services.messaging_service import send_welcome_message
 from app.services.clinic_service import get_clinic
+from app.integrations.email_client import send_email
+from app.integrations.twilio_client import send_sms
+from app.models.patient_doctor_link import PatientDoctorLink
 
 router = APIRouter(prefix="/patients", tags=["Patients"])
 
@@ -81,3 +86,73 @@ async def remove_patient(
         raise HTTPException(status_code=404, detail="Patient not found")
     await deactivate_patient(db, patient)
     return {"message": "Patient deactivated"}
+
+
+@router.post("/{patient_id}/generate-connection-code")
+async def generate_connection_code(
+    patient_id: uuid.UUID,
+    send_email_flag: bool = True,
+    send_sms_flag: bool = True,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    patient = await get_patient(db, current_user.clinic_id, patient_id)
+    if not patient:
+        raise HTTPException(status_code=404, detail="Patient not found")
+
+    stmt = select(PatientDoctorLink).where(
+        PatientDoctorLink.clinic_id == current_user.clinic_id,
+        PatientDoctorLink.doctor_id == current_user.id,
+        PatientDoctorLink.patient_id == patient.id,
+    )
+    result = await db.execute(stmt)
+    link = result.scalar_one_or_none()
+
+    if not link:
+        link = PatientDoctorLink(
+            clinic_id=current_user.clinic_id,
+            doctor_id=current_user.id,
+            patient_id=patient.id,
+            connection_code=str(uuid.uuid4()),
+        )
+        db.add(link)
+
+    link.last_sent_at = datetime.utcnow()
+    await db.commit()
+    await db.refresh(link)
+
+    clinic = await get_clinic(db, current_user.clinic_id)
+    clinic_name = clinic.name if clinic else "your clinic"
+
+    message_body = (
+        f"Hello {patient.name},\n\n"
+        f"Your secure doctor connection code from {clinic_name} is:\n"
+        f"{link.connection_code}\n\n"
+        f"Use this code in the patient portal to connect with your doctor."
+    )
+
+    delivery = {"email": None, "sms": None}
+
+    if send_email_flag and patient.email:
+        delivery["email"] = await send_email(
+            to_email=patient.email,
+            subject=f"Your connection code from {clinic_name}",
+            body=message_body,
+        )
+
+    if send_sms_flag and patient.phone:
+        delivery["sms"] = await send_sms(
+            to_number=patient.phone,
+            message=f"{clinic_name} connection code: {link.connection_code}",
+        )
+
+    return {
+        "patient_id": str(patient.id),
+        "patient_name": patient.name,
+        "connection_code": link.connection_code,
+        "delivery": delivery,
+        "sent_to": {
+            "email": patient.email,
+            "phone": patient.phone,
+        },
+    }

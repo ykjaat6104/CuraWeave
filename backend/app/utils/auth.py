@@ -22,3 +22,25 @@ async def get_current_user(
     if not user:
         raise HTTPException(status_code=401, detail="User not found")
     return user
+
+
+async def get_current_patient(
+    token: str = Depends(oauth2_scheme),
+    db: AsyncSession = Depends(get_db)
+):
+    from app.models.patient import Patient
+
+    payload = decode_token(token)
+    user_id = payload.get("sub")
+    role = payload.get("role")
+
+    if role != "patient":
+        raise HTTPException(status_code=401, detail="Patient token required")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    result = await db.execute(select(Patient).where(Patient.id == user_id))
+    patient = result.scalar_one_or_none()
+    if not patient:
+        raise HTTPException(status_code=401, detail="Patient not found")
+    return patient

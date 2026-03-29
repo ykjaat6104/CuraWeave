@@ -26,6 +26,7 @@ const URGENCY_COLORS = {
 
 export default function DashboardPage() {
   const { user } = useAuthStore()
+  const firstName = (user?.name || user?.full_name || 'Doctor').split(' ')[0]
   const [stats, setStats] = useState<Stats | null>(null)
   const [apptTrend, setApptTrend] = useState([])
   const [triageDist, setTriageDist] = useState([])
@@ -90,7 +91,7 @@ export default function DashboardPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold text-white">
-          Good morning, {user?.full_name?.split(' ')[0] || 'Doctor'} 👋
+          Good morning, {firstName} 👋
         </h1>
         <p className="text-slate-400 mt-1">Here's what's happening at your clinic today</p>
       </div>

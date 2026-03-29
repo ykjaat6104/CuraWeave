@@ -21,6 +21,17 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
+   const getErrorMessage = (err: any, fallback: string) => {
+      const detail = err?.response?.data?.detail
+      if (typeof detail === 'string') return detail
+      if (Array.isArray(detail)) {
+         const first = detail[0]
+         if (typeof first === 'string') return first
+         if (first?.msg) return String(first.msg)
+      }
+      return fallback
+   }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (formData.password !== formData.confirmPassword) {
@@ -31,17 +42,16 @@ export default function RegisterPage() {
     setError('')
     try {
       await authApi.register({
+            name: formData.clinicName,
         email: formData.email,
-        password: formData.password,
-        full_name: formData.fullName,
-        phone_number: formData.phone,
-        clinic_name: formData.clinicName,
-        specialization: formData.specialization,
+            phone: formData.phone,
+            owner_name: formData.fullName,
+            owner_password: formData.password,
       })
-      toast.success('Registration successful! Please verify your email.')
+         toast.success('Registration successful! Please sign in.')
       setTimeout(() => navigate('/doctor/login'), 2000)
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Registration failed')
+         setError(getErrorMessage(err, 'Registration failed'))
     } finally {
       setLoading(false)
     }
