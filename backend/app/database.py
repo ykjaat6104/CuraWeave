@@ -42,6 +42,7 @@ async def init_db():
     import app.models.triage
     import app.models.campaign
     import app.models.subscription
+    import app.models.patient_doctor_link
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)

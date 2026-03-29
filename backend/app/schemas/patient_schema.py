@@ -41,7 +41,7 @@ class PatientRegister(BaseModel):
     name: str
     email: EmailStr
     password: str
-    clinic_id: uuid.UUID
+    clinic_id: Optional[uuid.UUID] = None
     phone: Optional[str] = None
     gender: Optional[str] = None
     date_of_birth: Optional[date] = None

@@ -16,11 +16,21 @@ export default function PatientRegisterPage() {
     phone: '',
     dob: '',
     gender: 'Other',
-    clinic_id: 1, // Default clinic ID for now or from URL params
   })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
+
+   const getErrorMessage = (err: any, fallback: string) => {
+      const detail = err?.response?.data?.detail
+      if (typeof detail === 'string') return detail
+      if (Array.isArray(detail)) {
+         const first = detail[0]
+         if (typeof first === 'string') return first
+         if (first?.msg) return String(first.msg)
+      }
+      return fallback
+   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -34,21 +44,15 @@ export default function PatientRegisterPage() {
       await patientAuthApi.register({
         email: formData.email,
         password: formData.password,
-        full_name: formData.fullName,
-        phone_number: formData.phone,
+            name: formData.fullName,
+            phone: formData.phone,
         date_of_birth: formData.dob || undefined,
         gender: formData.gender,
-        clinic_id: Number(formData.clinic_id)
       })
       toast.success('Registration successful! Please login.')
       setTimeout(() => navigate('/patient/login'), 2000)
     } catch (err: any) {
-      if (typeof err.response?.data?.detail === 'string') {
-        setError(err.response?.data?.detail)
-      } else {
-         // Convert array of errors to string if possible, or generic message
-         setError('Registration failed. Please check your inputs.')
-      }
+         setError(getErrorMessage(err, 'Registration failed. Please check your inputs.'))
     } finally {
       setLoading(false)
     }
@@ -228,16 +232,6 @@ export default function PatientRegisterPage() {
                      </div>
                   </div>
 
-                  <div className="space-y-2">
-                      <label className="text-sm font-medium text-slate-300">Clinic ID (Auto-filled from Link)</label>
-                      <input
-                          name="clinic_id"
-                          type="number"
-                          readOnly
-                          className="w-full px-4 py-2.5 bg-slate-800/50 border border-slate-800 rounded-lg text-slate-500 cursor-not-allowed"
-                          value={formData.clinic_id}
-                      />
-                  </div>
                 </div>
 
                <div className="pt-4">

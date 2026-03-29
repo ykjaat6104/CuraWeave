@@ -1,11 +1,12 @@
 import { create } from 'zustand'
 
 interface User {
-  id: number
+  id: string
   email: string
-  full_name: string
+  name?: string
+  full_name?: string
   role: string
-  clinic_id: number
+  clinic_id: string
 }
 
 interface AuthStore {
