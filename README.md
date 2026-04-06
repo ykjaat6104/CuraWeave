@@ -39,135 +39,65 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-<table>
-    <tr>
-        <td width="50%" valign="top">
-
-### Frontend
-
-**Core Framework**
-- React 18.3.1
-- TypeScript 5.2.2
-- Vite 7.3.1
-
-**Navigation & Routing**
-- React Router DOM 6.24.0
-
-**Styling & UI**
-- Tailwind CSS 3.4.4
-- PostCSS 8.4.38
-- Autoprefixer 10.4.19
-- Lucide React 0.400.0
-
-**State & Data**
-- Zustand 4.5.2
-- Axios 1.7.2
-- Recharts 2.12.7
-- date-fns 3.6.0
-
-**UX**
-- React Hot Toast 2.4.1
-
-        </td>
-        <td width="50%" valign="top">
-
-### Backend
-
-**Core Framework**
-- FastAPI 0.111.0+
-- Python 3.11+
-- Uvicorn 0.29.0
-- Gunicorn 21.2.0
-
-**Database & ORM**
-- PostgreSQL 16
-- SQLAlchemy 2.0.30+
-- asyncpg 0.29.0
-- psycopg2-binary 2.9.9
-- Alembic 1.13.1
-
-**Validation & Security**
-- Pydantic 2.7.4
-- Pydantic Settings 2.2.1
-- python-jose 3.3.0
-- bcrypt 4.0.1
-- passlib 1.7.4
-
-**Task Queue & Scheduling**
-- Celery 5.4.0
-- Redis 5.0.4
-- APScheduler 3.10.4
-
-**AI & Integrations**
-- LangGraph 0.1.5
-- LangChain 0.2.5
-- langchain-core 0.2.9
-- langchain-google-genai 1.0.5
-- google-genai 1.0.0
-- Stripe 9.6.0
-- Twilio 9.1.1
-- httpx 0.27.0
-
-        </td>
-    </tr>
-    <tr>
-        <td width="50%" valign="top">
-
-### Infrastructure
-
-**Databases & Storage**
-- PostgreSQL 16
-- Supabase PostgreSQL
-- Supabase Storage
-
-**Caching & Messaging**
-- Redis 7
-- Celery Broker
-- Session Store
-
-**External Services**
-- Google Gemini 2.5 Flash
-- Stripe Connect
-- Twilio API
-
-**Containerization**
-- Docker
-- Docker Compose v3.9
-- Alpine Linux
-- Nginx
-
-**Documentation**
-- OpenAPI 3.0
-- Swagger UI
-
-        </td>
-        <td width="50%" valign="top">
-
-### DevOps
-
-**Version Control**
-- Git
-- GitHub
-
-**Package Management**
-- npm
-- pip
-- pyproject.toml
-- setuptools
-
-**Build & Compilation**
-- TypeScript Compiler
-- Vite Build System
-- npm scripts
-
-**Environment Management**
-- dotenv (.env)
-- .env.example
-
-**Process Management**
-- Celery Worker
-- Celery Beat
-- Uvicorn
+<table style="width: 100%; border-collapse: collapse;">
+  <tr>
+    <th align="left" width="50%">Frontend</th>
+    <th align="left" width="50%">Backend</th>
+  </tr>
+  <tr>
+    <td valign="top">
+      <ul>
+        <li><strong>Framework:</strong> React 18.3.1 + Vite</li>
+        <li><strong>Language:</strong> TypeScript 5.2.2</li>
+        <li><strong>Routing:</strong> React Router DOM 6.24.0</li>
+        <li><strong>Styling:</strong> Tailwind CSS + PostCSS</li>
+        <li><strong>State Management:</strong> Zustand 4.5.2</li>
+        <li><strong>HTTP Client:</strong> Axios 1.7.2</li>
+        <li><strong>UI Components:</strong> Lucide React</li>
+        <li><strong>Data Viz:</strong> Recharts 2.12.7</li>
+        <li><strong>Date Utils:</strong> date-fns 3.6.0</li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li><strong>Framework:</strong> FastAPI 0.111.0+</li>
+        <li><strong>Language:</strong> Python 3.11+</li>
+        <li><strong>ASGI Server:</strong> Uvicorn + Gunicorn</li>
+        <li><strong>ORM:</strong> SQLAlchemy 2.0.30+</li>
+        <li><strong>Validation:</strong> Pydantic v2</li>
+        <li><strong>Auth:</strong> JWT + bcrypt + passlib</li>
+        <li><strong>AI:</strong> LangGraph + LangChain</li>
+        <li><strong>LLM:</strong> Google Gemini 2.5</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <th align="left">Infrastructure</th>
+    <th align="left">DevOps</th>
+  </tr>
+  <tr>
+    <td valign="top">
+      <ul>
+        <li><strong>Database:</strong> PostgreSQL 16</li>
+        <li><strong>Cloud DB:</strong> Supabase</li>
+        <li><strong>Cache/Broker:</strong> Redis 7</li>
+        <li><strong>Payments:</strong> Stripe Connect</li>
+        <li><strong>Messaging:</strong> Twilio (WhatsApp/SMS)</li>
+        <li><strong>Storage:</strong> Supabase Storage</li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li><strong>Containerization:</strong> Docker + Compose</li>
+        <li><strong>Web Server:</strong> Nginx</li>
+        <li><strong>CI/CD:</strong> GitHub Actions</li>
+        <li><strong>Package Manager:</strong> npm + pip</li>
+        <li><strong>Environment:</strong> dotenv</li>
+        <li><strong>Monitoring:</strong> Celery Worker/Beat</li>
+      </ul>
+    </td>
+  </tr>
+</table>
 
 **CI/CD & Quality**
 - GitHub Actions
