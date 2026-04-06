@@ -47,25 +47,23 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
   <tr>
     <td valign="top" style="padding: 4px 12px;">
       <ul>
-        <li><strong>Framework:</strong> React 18.3.1 + Vite</li>
-        <li><strong>Language:</strong> TypeScript 5.2.2</li>
-        <li><strong>Routing:</strong> React Router DOM 6.24.0</li>
-        <li><strong>Styling:</strong> Tailwind CSS + PostCSS</li>
-        <li><strong>State Management:</strong> Zustand 4.5.2</li>
-        <li><strong>HTTP Client:</strong> Axios 1.7.2</li>
-        <li><strong>UI Components:</strong> Lucide React</li>
-        <li><strong>Data Viz:</strong> Recharts 2.12.7</li>
-        <li><strong>Date Utils:</strong> date-fns 3.6.0</li>
+        <li><strong>Framework:</strong> React 18.3 + Vite</li>
+        <li><strong>Language:</strong> TypeScript 5.2</li>
+        <li><strong>Routing:</strong> React Router DOM 6.24</li>
+        <li><strong>Styling:</strong> Tailwind CSS 3.4</li>
+        <li><strong>State:</strong> Zustand 4.5</li>
+        <li><strong>HTTP Client:</strong> Axios 1.7</li>
+        <li><strong>Icons:</strong> Lucide React</li>
+        <li><strong>Charts:</strong> Recharts 2.12</li>
       </ul>
     </td>
     <td valign="top" style="padding: 4px 12px;">
       <ul>
-        <li><strong>Framework:</strong> FastAPI 0.111.0+</li>
+        <li><strong>Framework:</strong> FastAPI 0.111+</li>
         <li><strong>Language:</strong> Python 3.11+</li>
-        <li><strong>ASGI Server:</strong> Uvicorn + Gunicorn</li>
-        <li><strong>ORM:</strong> SQLAlchemy 2.0.30+</li>
+        <li><strong>ASGI:</strong> Uvicorn + Gunicorn</li>
+        <li><strong>ORM:</strong> SQLAlchemy 2.0</li>
         <li><strong>Validation:</strong> Pydantic v2</li>
-        <li><strong>Auth:</strong> JWT + bcrypt + passlib</li>
         <li><strong>AI:</strong> LangGraph + LangChain</li>
         <li><strong>LLM:</strong> Google Gemini 2.5</li>
       </ul>
@@ -79,11 +77,10 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
     <td valign="top" style="padding: 4px 12px;">
       <ul>
         <li><strong>Database:</strong> PostgreSQL 16</li>
-        <li><strong>Cloud DB:</strong> Supabase</li>
         <li><strong>Cache/Broker:</strong> Redis 7</li>
-        <li><strong>Payments:</strong> Stripe Connect</li>
+        <li><strong>Payments:</strong> Stripe</li>
         <li><strong>Messaging:</strong> Twilio (WhatsApp/SMS)</li>
-        <li><strong>Storage:</strong> Supabase Storage</li>
+        <li><strong>Storage:</strong> Local Docker Volumes</li>
       </ul>
     </td>
     <td valign="top" style="padding: 4px 12px;">
@@ -93,7 +90,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
         <li><strong>CI/CD:</strong> GitHub Actions</li>
         <li><strong>Package Manager:</strong> npm + pip</li>
         <li><strong>Environment:</strong> dotenv</li>
-        <li><strong>Monitoring:</strong> Celery Worker/Beat</li>
+        <li><strong>Tasks:</strong> Celery Worker/Beat</li>
       </ul>
     </td>
   </tr>
