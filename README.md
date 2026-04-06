@@ -39,172 +39,148 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-<table>
-<tr>
-<td width="50%">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
 
-### Frontend
+<div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
 
-**Core Framework**
-* React 18.3.1
-* TypeScript 5.2.2
-* Vite 7.3.1 (Build Tool)
-
-**Routing & Navigation**
-* React Router DOM 6.24.0
-
-**Styling & UI**
-* Tailwind CSS 3.4.4
-* PostCSS 8.4.38
-* Autoprefixer 10.4.19
-* Lucide React 0.400.0 (Icons)
-
-**State Management**
-* Zustand 4.5.2
-
-**HTTP & APIs**
-* Axios 1.7.2
-* React Hot Toast 2.4.1 (Notifications)
-
-**Data & Utilities**
-* Recharts 2.12.7 (Data Visualization)
-* date-fns 3.6.0 (Date Manipulation)
-
-**Dev Dependencies**
-* @vitejs/plugin-react 4.3.1
-* @types/react 18.3.3
-* @types/react-dom 18.3.0
-
-</td>
-<td width="50%">
-
-### Backend
+### 🎨 Frontend Layer
 
 **Core Framework**
-* FastAPI 0.111.0+
-* Python 3.11+
-* Uvicorn 0.29.0 (ASGI Server)
-* Gunicorn 21.2.0 (Production Server)
+- React 18.3.1 — Component-based UI
+- TypeScript 5.2.2 — Type-safe development
+- Vite 7.3.1 — Lightning-fast build tool
 
-**Database & ORM**
-* SQLAlchemy 2.0.30+
-* PostgreSQL 16 (Database)
-* asyncpg 0.29.0 (Async Driver)
-* psycopg2-binary 2.9.9 (Sync Driver)
-* Alembic 1.13.1 (Migrations)
+**Navigation & Routing**
+- React Router DOM 6.24.0 — Client-side routing
 
-**Validation & Schemas**
-* Pydantic 2.7.4
-* Pydantic Settings 2.2.1
+**Styling & Design**
+- Tailwind CSS 3.4.4 — Utility-first styling
+- PostCSS 8.4.38 — CSS transformation
+- Lucide React 0.400.0 — Beautiful icons
 
-**Authentication & Security**
-* python-jose 3.3.0 (JWT)
-* passlib 1.7.4 (Password Hashing)
-* bcrypt 4.0.1 (Encryption)
-* python-multipart (Form Data)
+**State & Data**
+- Zustand 4.5.2 — Lightweight state management
+- Axios 1.7.2 — Promise-based HTTP client
+- Recharts 2.12.7 — Data visualization library
+- date-fns 3.6.0 — Modern date utilities
 
-**Task Queue & Scheduling**
-* Celery 5.4.0 (Background Tasks)
-* Redis 5.0.4 (Broker/Cache)
-* APScheduler 3.10.4 (Job Scheduling)
+**UX Enhancements**
+- React Hot Toast 2.4.1 — Toast notifications
 
-**AI & ML**
-* LangGraph 0.1.5
-* LangChain 0.2.5
-* langchain-core 0.2.9
-* langchain-google-genai 1.0.5
-* google-genai 1.0.0 (Google Gemini)
+</div>
+
+<div style="padding: 2rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; color: white;">
+
+### ⚡ Backend Architecture
+
+**Foundation**
+- FastAPI 0.111.0+ — Modern, fast web framework
+- Python 3.11+ — High-performance runtime
+- Uvicorn 0.29.0 — ASGI server
+- Gunicorn 21.2.0 — Production-grade server
+
+**Database Layer**
+- PostgreSQL 16 — Enterprise-grade database
+- SQLAlchemy 2.0.30+ — SQL toolkit & ORM
+- asyncpg 0.29.0 — Async PostgreSQL driver
+- Alembic 1.13.1 — Database migrations
+
+**Validation & Security**
+- Pydantic 2.7.4 — Data validation
+- python-jose 3.3.0 — JWT tokens
+- bcrypt 4.0.1 — Password encryption
+- passlib 1.7.4 — Hashing framework
+
+**Async & Background Tasks**
+- Celery 5.4.0 — Distributed task queue
+- Redis 5.0.4 — Cache & message broker
+- APScheduler 3.10.4 — Job scheduling
+
+**AI & Intelligence**
+- LangGraph 0.1.5 + LangChain 0.2.5 — AI workflows
+- google-genai 1.0.0 — Google Gemini integration
 
 **Integrations**
-* Stripe 9.6.0 (Payments)
-* Twilio 9.1.1 (SMS/WhatsApp)
-* httpx 0.27.0 (HTTP Client)
+- Stripe 9.6.0 — Payment processing
+- Twilio 9.1.1 — SMS & WhatsApp
+- httpx 0.27.0 — Async HTTP client
 
-**Utilities**
-* python-dotenv 1.0.1 (Environment Variables)
+</div>
 
-</td>
-</tr>
-<tr>
-<td width="50%">
+<div style="padding: 2rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; color: white;">
 
-### Infrastructure & Data
+### 🗄️ Infrastructure & Data
 
-**Databases**
-* PostgreSQL 16 (Primary Database)
-  * Async: asyncpg 0.29.0
-  * Sync: psycopg2-binary 2.9.9
+**Database Systems**
+- PostgreSQL 16 — Primary data store
+  - asyncpg 0.29.0 — Async operations
+  - psycopg2-binary 2.9.9 — Sync operations
 
-**Caching & Messaging**
-* Redis 7 (Cache, Session Store, Celery Broker)
+**Caching & Queuing**
+- Redis 7 — In-memory data store
+  - Celery Broker — Task queuing
+  - Session Store — User sessions
+  - Cache Layer — Performance optimization
 
-**APIs & External Services**
-* Stripe Connect (Payment Processing)
-* Twilio API (SMS, WhatsApp Messaging)
-* Google Gemini 2.5 Flash (LLM)
-* OpenAPI/Swagger (API Documentation)
-
-**File & Data Storage**
-* Supabase PostgreSQL
-* Supabase Storage (Cloud Files)
+**External APIs**
+- Google Gemini 2.5 Flash — AI/LLM
+- Stripe Connect — Payment gateway
+- Twilio API — Communications
+- Supabase — Cloud database & storage
 
 **Containerization**
-* Docker (Container Runtime)
-* Docker Compose (Container Orchestration)
-* Alpine Linux (Minimal Base Images)
-
-**Web Server**
-* Nginx (Reverse Proxy, Static Serving)
-
-</td>
-<td width="50%">
-
-### DevOps & Development Tools
-
-**Version Control**
-* Git
-* GitHub (Repository Hosting)
-
-**Containerization & Deployment**
-* Docker & Docker Compose (v3.9)
-* Dockerfile (Backend, Frontend)
-* docker-compose.yml (Multi-service Orchestration)
-
-**Package Management**
-* npm (Frontend Dependencies)
-* pip (Python Package Manager)
-* pyproject.toml (Python Packaging Configuration)
-* setuptools (Python Build System)
-
-**Environment Management**
-* .env & .env.example (Configuration)
-* dotenv (Environment Variable Loading)
-
-**Build & Compilation**
-* TypeScript Compiler (tsc)
-* Vite Build System
-* npm build scripts
+- Docker — Container runtime
+- Docker Compose v3.9 — Orchestration
+- Alpine Linux — Minimal base images
+- Nginx — Reverse proxy & static serving
 
 **API Documentation**
-* OpenAPI 3.0 (FastAPI Auto-generated)
-* Swagger UI (Interactive API Docs)
+- OpenAPI 3.0 — API specification
+- Swagger UI — Interactive documentation
 
-**Code Quality & Development**
-* Autoprefixer (CSS Vendor Prefixes)
-* PostCSS (CSS Processing)
-* Hot Module Replacement (HMR)
+</div>
 
-**CI/CD (Ready)**
-* GitHub Actions (Workflow Automation)
+<div style="padding: 2rem; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; color: white;">
+
+### 🚀 DevOps & Development
+
+**Version Control & Collaboration**
+- Git — Distributed version control
+- GitHub — Repository hosting & CI/CD
+
+**Package Management**
+- npm — Frontend dependencies
+- pip — Python package manager
+- pyproject.toml — Python project config
+- setuptools — Python build system
+
+**Build & Compilation**
+- TypeScript Compiler — Type checking
+- Vite Build System — Frontend bundling
+- npm scripts — Task automation
+
+**Environment & Configuration**
+- dotenv (.env files) — Configuration management
+- .env.example — Documentation template
 
 **Process Management**
-* Celery Worker (Background Task Processing)
-* Celery Beat (Scheduled Task Execution)
-* Uvicorn (Development Server)
+- Celery Worker — Background task execution
+- Celery Beat — Scheduled task runner
+- Uvicorn — ASGI development server
 
-</td>
-</tr>
-</table>
+**CI/CD Pipeline**
+- GitHub Actions — Workflow automation
+- Docker Build — Container building
+- Automated Testing — Quality assurance
+
+**Code Quality**
+- Autoprefixer — CSS vendor prefixes
+- PostCSS — CSS processing pipeline
+- Hot Module Replacement (HMR) — Fast development
+
+</div>
+
+</div>
 
 ---
 
