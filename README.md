@@ -39,13 +39,172 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-| Frontend | Backend |
-|---|---|
-| - **Framework:** React 18 + Vite<br>- **Language:** TypeScript<br>- **Routing:** React Router DOM<br>- **Styling:** Tailwind CSS + PostCSS<br>- **State Management:** Zustand<br>- **HTTP Client:** Axios<br>- **UI/Charts:** Lucide React, Recharts<br>- **Date Utilities:** date-fns | - **Framework:** FastAPI<br>- **Language:** Python 3.11+<br>- **ASGI Server:** Uvicorn + Gunicorn<br>- **ORM:** SQLAlchemy 2.0<br>- **Schema/Validation:** Pydantic v2<br>- **Auth:** JWT + bcrypt/passlib<br>- **AI Orchestration:** LangGraph + LangChain<br>- **LLM Provider:** Google Gemini (google-genai) |
+<table>
+<tr>
+<td width="50%">
 
-| Infrastructure | DevOps |
-|---|---|
-| - **Database:** PostgreSQL 16<br>- **Async DB Driver:** asyncpg<br>- **Sync DB Driver:** psycopg2-binary<br>- **Cache/Broker:** Redis 7<br>- **Background Jobs:** Celery Worker + Celery Beat<br>- **Payments:** Stripe<br>- **Messaging:** Twilio (WhatsApp/SMS)<br>- **Task Scheduling:** APScheduler | - **Containerization:** Docker + Docker Compose<br>- **Frontend Serving:** Nginx container setup<br>- **Environment Management:** dotenv (.env)<br>- **API Docs:** OpenAPI/Swagger (FastAPI docs)<br>- **Python Packaging:** pyproject.toml + setuptools<br>- **Frontend Package Manager:** npm |
+### Frontend
+
+**Core Framework**
+* React 18.3.1
+* TypeScript 5.2.2
+* Vite 7.3.1 (Build Tool)
+
+**Routing & Navigation**
+* React Router DOM 6.24.0
+
+**Styling & UI**
+* Tailwind CSS 3.4.4
+* PostCSS 8.4.38
+* Autoprefixer 10.4.19
+* Lucide React 0.400.0 (Icons)
+
+**State Management**
+* Zustand 4.5.2
+
+**HTTP & APIs**
+* Axios 1.7.2
+* React Hot Toast 2.4.1 (Notifications)
+
+**Data & Utilities**
+* Recharts 2.12.7 (Data Visualization)
+* date-fns 3.6.0 (Date Manipulation)
+
+**Dev Dependencies**
+* @vitejs/plugin-react 4.3.1
+* @types/react 18.3.3
+* @types/react-dom 18.3.0
+
+</td>
+<td width="50%">
+
+### Backend
+
+**Core Framework**
+* FastAPI 0.111.0+
+* Python 3.11+
+* Uvicorn 0.29.0 (ASGI Server)
+* Gunicorn 21.2.0 (Production Server)
+
+**Database & ORM**
+* SQLAlchemy 2.0.30+
+* PostgreSQL 16 (Database)
+* asyncpg 0.29.0 (Async Driver)
+* psycopg2-binary 2.9.9 (Sync Driver)
+* Alembic 1.13.1 (Migrations)
+
+**Validation & Schemas**
+* Pydantic 2.7.4
+* Pydantic Settings 2.2.1
+
+**Authentication & Security**
+* python-jose 3.3.0 (JWT)
+* passlib 1.7.4 (Password Hashing)
+* bcrypt 4.0.1 (Encryption)
+* python-multipart (Form Data)
+
+**Task Queue & Scheduling**
+* Celery 5.4.0 (Background Tasks)
+* Redis 5.0.4 (Broker/Cache)
+* APScheduler 3.10.4 (Job Scheduling)
+
+**AI & ML**
+* LangGraph 0.1.5
+* LangChain 0.2.5
+* langchain-core 0.2.9
+* langchain-google-genai 1.0.5
+* google-genai 1.0.0 (Google Gemini)
+
+**Integrations**
+* Stripe 9.6.0 (Payments)
+* Twilio 9.1.1 (SMS/WhatsApp)
+* httpx 0.27.0 (HTTP Client)
+
+**Utilities**
+* python-dotenv 1.0.1 (Environment Variables)
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+### Infrastructure & Data
+
+**Databases**
+* PostgreSQL 16 (Primary Database)
+  * Async: asyncpg 0.29.0
+  * Sync: psycopg2-binary 2.9.9
+
+**Caching & Messaging**
+* Redis 7 (Cache, Session Store, Celery Broker)
+
+**APIs & External Services**
+* Stripe Connect (Payment Processing)
+* Twilio API (SMS, WhatsApp Messaging)
+* Google Gemini 2.5 Flash (LLM)
+* OpenAPI/Swagger (API Documentation)
+
+**File & Data Storage**
+* Supabase PostgreSQL
+* Supabase Storage (Cloud Files)
+
+**Containerization**
+* Docker (Container Runtime)
+* Docker Compose (Container Orchestration)
+* Alpine Linux (Minimal Base Images)
+
+**Web Server**
+* Nginx (Reverse Proxy, Static Serving)
+
+</td>
+<td width="50%">
+
+### DevOps & Development Tools
+
+**Version Control**
+* Git
+* GitHub (Repository Hosting)
+
+**Containerization & Deployment**
+* Docker & Docker Compose (v3.9)
+* Dockerfile (Backend, Frontend)
+* docker-compose.yml (Multi-service Orchestration)
+
+**Package Management**
+* npm (Frontend Dependencies)
+* pip (Python Package Manager)
+* pyproject.toml (Python Packaging Configuration)
+* setuptools (Python Build System)
+
+**Environment Management**
+* .env & .env.example (Configuration)
+* dotenv (Environment Variable Loading)
+
+**Build & Compilation**
+* TypeScript Compiler (tsc)
+* Vite Build System
+* npm build scripts
+
+**API Documentation**
+* OpenAPI 3.0 (FastAPI Auto-generated)
+* Swagger UI (Interactive API Docs)
+
+**Code Quality & Development**
+* Autoprefixer (CSS Vendor Prefixes)
+* PostCSS (CSS Processing)
+* Hot Module Replacement (HMR)
+
+**CI/CD (Ready)**
+* GitHub Actions (Workflow Automation)
+
+**Process Management**
+* Celery Worker (Background Task Processing)
+* Celery Beat (Scheduled Task Execution)
+* Uvicorn (Development Server)
+
+</td>
+</tr>
+</table>
 
 ---
 
