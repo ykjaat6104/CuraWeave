@@ -39,11 +39,11 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-<table style="width: 100%; border-collapse: collapse;"><tr>
+<table>
+    <tr>
+        <td width="50%" valign="top">
 
-<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 2px solid #667eea; border-radius: 12px; color: white; vertical-align: top;">
-
-### 🎨 Frontend Layer
+### Frontend
 
 **Core Framework**
 - React 18.3.1
@@ -53,9 +53,10 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 **Navigation & Routing**
 - React Router DOM 6.24.0
 
-**Styling & Design**
+**Styling & UI**
 - Tailwind CSS 3.4.4
 - PostCSS 8.4.38
+- Autoprefixer 10.4.19
 - Lucide React 0.400.0
 
 **State & Data**
@@ -67,68 +68,67 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 **UX**
 - React Hot Toast 2.4.1
 
-</td>
+        </td>
+        <td width="50%" valign="top">
 
-<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border: 2px solid #f093fb; border-radius: 12px; color: white; vertical-align: top;">
+### Backend
 
-### ⚡ Backend Architecture
-
-**Foundation**
+**Core Framework**
 - FastAPI 0.111.0+
 - Python 3.11+
 - Uvicorn 0.29.0
 - Gunicorn 21.2.0
 
-**Database**
+**Database & ORM**
 - PostgreSQL 16
 - SQLAlchemy 2.0.30+
 - asyncpg 0.29.0
+- psycopg2-binary 2.9.9
 - Alembic 1.13.1
 
-**Security**
+**Validation & Security**
 - Pydantic 2.7.4
+- Pydantic Settings 2.2.1
 - python-jose 3.3.0
 - bcrypt 4.0.1
 - passlib 1.7.4
 
-**Task Queue**
+**Task Queue & Scheduling**
 - Celery 5.4.0
 - Redis 5.0.4
 - APScheduler 3.10.4
 
-**AI & Intelligence**
+**AI & Integrations**
 - LangGraph 0.1.5
 - LangChain 0.2.5
+- langchain-core 0.2.9
+- langchain-google-genai 1.0.5
 - google-genai 1.0.0
-
-**Integrations**
 - Stripe 9.6.0
 - Twilio 9.1.1
 - httpx 0.27.0
 
-</td>
+        </td>
+    </tr>
+    <tr>
+        <td width="50%" valign="top">
 
-</tr><tr>
+### Infrastructure
 
-<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 2px solid #4facfe; border-radius: 12px; color: white; vertical-align: top;">
-
-### 🗄️ Infrastructure & Data
-
-**Database Systems**
+**Databases & Storage**
 - PostgreSQL 16
-- asyncpg 0.29.0
-- psycopg2-binary 2.9.9
+- Supabase PostgreSQL
+- Supabase Storage
 
-**Caching & Queuing**
+**Caching & Messaging**
 - Redis 7
 - Celery Broker
 - Session Store
 
-**External APIs**
-- Google Gemini 2.5
+**External Services**
+- Google Gemini 2.5 Flash
 - Stripe Connect
 - Twilio API
-- Supabase
 
 **Containerization**
 - Docker
@@ -140,11 +140,10 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 - OpenAPI 3.0
 - Swagger UI
 
-</td>
+        </td>
+        <td width="50%" valign="top">
 
-<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border: 2px solid #fa709a; border-radius: 12px; color: white; vertical-align: top;">
-
-### 🚀 DevOps & Development
+### DevOps
 
 **Version Control**
 - Git
@@ -161,7 +160,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 - Vite Build System
 - npm scripts
 
-**Environment**
+**Environment Management**
 - dotenv (.env)
 - .env.example
 
@@ -170,19 +169,15 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 - Celery Beat
 - Uvicorn
 
-**CI/CD Pipeline**
+**CI/CD & Quality**
 - GitHub Actions
 - Docker Build
-- Quality Assurance
-
-**Code Quality**
 - Autoprefixer
 - PostCSS
-- HMR
 
-</td>
-
-</tr></table>
+        </td>
+    </tr>
+</table>
 
 ---
 
