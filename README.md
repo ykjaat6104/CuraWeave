@@ -41,11 +41,11 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 <table width="100%">
   <tr>
-    <th align="center" width="50%"><h3>Frontend</h3></th>
-    <th align="center" width="50%"><h3>Backend</h3></th>
+    <th align="center" width="50%">Frontend</th>
+    <th align="center" width="50%">Backend</th>
   </tr>
   <tr>
-    <td valign="top" style="padding: 10px;">
+    <td valign="top" style="padding: 4px 12px;">
       <ul>
         <li><strong>Framework:</strong> React 18.3.1 + Vite</li>
         <li><strong>Language:</strong> TypeScript 5.2.2</li>
@@ -58,7 +58,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
         <li><strong>Date Utils:</strong> date-fns 3.6.0</li>
       </ul>
     </td>
-    <td valign="top" style="padding: 10px;">
+    <td valign="top" style="padding: 4px 12px;">
       <ul>
         <li><strong>Framework:</strong> FastAPI 0.111.0+</li>
         <li><strong>Language:</strong> Python 3.11+</li>
@@ -72,11 +72,11 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
     </td>
   </tr>
   <tr>
-    <th align="center"><h3>Infrastructure</h3></th>
-    <th align="center"><h3>DevOps</h3></th>
+    <th align="center">Infrastructure</th>
+    <th align="center">DevOps</th>
   </tr>
   <tr>
-    <td valign="top" style="padding: 10px;">
+    <td valign="top" style="padding: 4px 12px;">
       <ul>
         <li><strong>Database:</strong> PostgreSQL 16</li>
         <li><strong>Cloud DB:</strong> Supabase</li>
@@ -86,7 +86,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
         <li><strong>Storage:</strong> Supabase Storage</li>
       </ul>
     </td>
-    <td valign="top" style="padding: 10px;">
+    <td valign="top" style="padding: 4px 12px;">
       <ul>
         <li><strong>Containerization:</strong> Docker + Compose</li>
         <li><strong>Web Server:</strong> Nginx</li>
