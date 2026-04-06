@@ -39,26 +39,13 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-### Backend
-*   **Framework:** [FastAPI](https://fastapi.tiangolo.com/) (Python 3.11+)
-*   **Database:** PostgreSQL (Async via `asyncpg`)
-*   **ORM:** SQLAlchemy 2.0
-*   **Caching & Queues:** Redis, Celery (for background tasks like email/campaigns)
-*   **AI/LLM:** Google Gemini Pro, LangChain, LangGraph
-*   **Authentication:** JWT (JSON Web Tokens) with RBAC
+| Frontend | Backend |
+|---|---|
+| - **Framework:** React 18 + Vite<br>- **Language:** TypeScript<br>- **Routing:** React Router DOM<br>- **Styling:** Tailwind CSS + PostCSS<br>- **State Management:** Zustand<br>- **HTTP Client:** Axios<br>- **UI/Charts:** Lucide React, Recharts<br>- **Date Utilities:** date-fns | - **Framework:** FastAPI<br>- **Language:** Python 3.11+<br>- **ASGI Server:** Uvicorn + Gunicorn<br>- **ORM:** SQLAlchemy 2.0<br>- **Schema/Validation:** Pydantic v2<br>- **Auth:** JWT + bcrypt/passlib<br>- **AI Orchestration:** LangGraph + LangChain<br>- **LLM Provider:** Google Gemini (google-genai) |
 
-### Frontend
-*   **Framework:** React 18 (Vite)
-*   **Language:** TypeScript
-*   **Styling:** Tailwind CSS
-*   **State Management:** Zustand
-*   **Data Visualization:** Recharts
-*   **Notifications:** React Hot Toast
-
-### DevOps & Infrastructure
-*   **Containerization:** Docker & Docker Compose
-*   **Server:** Nginx (Reverse Proxy)
-*   **CI/CD:** GitHub Actions (Ready)
+| Infrastructure | DevOps |
+|---|---|
+| - **Database:** PostgreSQL 16<br>- **Async DB Driver:** asyncpg<br>- **Sync DB Driver:** psycopg2-binary<br>- **Cache/Broker:** Redis 7<br>- **Background Jobs:** Celery Worker + Celery Beat<br>- **Payments:** Stripe<br>- **Messaging:** Twilio (WhatsApp/SMS)<br>- **Task Scheduling:** APScheduler | - **Containerization:** Docker + Docker Compose<br>- **Frontend Serving:** Nginx container setup<br>- **Environment Management:** dotenv (.env)<br>- **API Docs:** OpenAPI/Swagger (FastAPI docs)<br>- **Python Packaging:** pyproject.toml + setuptools<br>- **Frontend Package Manager:** npm |
 
 ---
 
