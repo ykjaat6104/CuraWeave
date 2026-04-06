@@ -39,148 +39,150 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+<table style="width: 100%; border-collapse: collapse;"><tr>
 
-<div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
+<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: 2px solid #667eea; border-radius: 12px; color: white; vertical-align: top;">
 
 ### 🎨 Frontend Layer
 
 **Core Framework**
-- React 18.3.1 — Component-based UI
-- TypeScript 5.2.2 — Type-safe development
-- Vite 7.3.1 — Lightning-fast build tool
+- React 18.3.1
+- TypeScript 5.2.2
+- Vite 7.3.1
 
 **Navigation & Routing**
-- React Router DOM 6.24.0 — Client-side routing
+- React Router DOM 6.24.0
 
 **Styling & Design**
-- Tailwind CSS 3.4.4 — Utility-first styling
-- PostCSS 8.4.38 — CSS transformation
-- Lucide React 0.400.0 — Beautiful icons
+- Tailwind CSS 3.4.4
+- PostCSS 8.4.38
+- Lucide React 0.400.0
 
 **State & Data**
-- Zustand 4.5.2 — Lightweight state management
-- Axios 1.7.2 — Promise-based HTTP client
-- Recharts 2.12.7 — Data visualization library
-- date-fns 3.6.0 — Modern date utilities
+- Zustand 4.5.2
+- Axios 1.7.2
+- Recharts 2.12.7
+- date-fns 3.6.0
 
-**UX Enhancements**
-- React Hot Toast 2.4.1 — Toast notifications
+**UX**
+- React Hot Toast 2.4.1
 
-</div>
+</td>
 
-<div style="padding: 2rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 12px; color: white;">
+<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border: 2px solid #f093fb; border-radius: 12px; color: white; vertical-align: top;">
 
 ### ⚡ Backend Architecture
 
 **Foundation**
-- FastAPI 0.111.0+ — Modern, fast web framework
-- Python 3.11+ — High-performance runtime
-- Uvicorn 0.29.0 — ASGI server
-- Gunicorn 21.2.0 — Production-grade server
+- FastAPI 0.111.0+
+- Python 3.11+
+- Uvicorn 0.29.0
+- Gunicorn 21.2.0
 
-**Database Layer**
-- PostgreSQL 16 — Enterprise-grade database
-- SQLAlchemy 2.0.30+ — SQL toolkit & ORM
-- asyncpg 0.29.0 — Async PostgreSQL driver
-- Alembic 1.13.1 — Database migrations
+**Database**
+- PostgreSQL 16
+- SQLAlchemy 2.0.30+
+- asyncpg 0.29.0
+- Alembic 1.13.1
 
-**Validation & Security**
-- Pydantic 2.7.4 — Data validation
-- python-jose 3.3.0 — JWT tokens
-- bcrypt 4.0.1 — Password encryption
-- passlib 1.7.4 — Hashing framework
+**Security**
+- Pydantic 2.7.4
+- python-jose 3.3.0
+- bcrypt 4.0.1
+- passlib 1.7.4
 
-**Async & Background Tasks**
-- Celery 5.4.0 — Distributed task queue
-- Redis 5.0.4 — Cache & message broker
-- APScheduler 3.10.4 — Job scheduling
+**Task Queue**
+- Celery 5.4.0
+- Redis 5.0.4
+- APScheduler 3.10.4
 
 **AI & Intelligence**
-- LangGraph 0.1.5 + LangChain 0.2.5 — AI workflows
-- google-genai 1.0.0 — Google Gemini integration
+- LangGraph 0.1.5
+- LangChain 0.2.5
+- google-genai 1.0.0
 
 **Integrations**
-- Stripe 9.6.0 — Payment processing
-- Twilio 9.1.1 — SMS & WhatsApp
-- httpx 0.27.0 — Async HTTP client
+- Stripe 9.6.0
+- Twilio 9.1.1
+- httpx 0.27.0
 
-</div>
+</td>
 
-<div style="padding: 2rem; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 12px; color: white;">
+</tr><tr>
+
+<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border: 2px solid #4facfe; border-radius: 12px; color: white; vertical-align: top;">
 
 ### 🗄️ Infrastructure & Data
 
 **Database Systems**
-- PostgreSQL 16 — Primary data store
-  - asyncpg 0.29.0 — Async operations
-  - psycopg2-binary 2.9.9 — Sync operations
+- PostgreSQL 16
+- asyncpg 0.29.0
+- psycopg2-binary 2.9.9
 
 **Caching & Queuing**
-- Redis 7 — In-memory data store
-  - Celery Broker — Task queuing
-  - Session Store — User sessions
-  - Cache Layer — Performance optimization
+- Redis 7
+- Celery Broker
+- Session Store
 
 **External APIs**
-- Google Gemini 2.5 Flash — AI/LLM
-- Stripe Connect — Payment gateway
-- Twilio API — Communications
-- Supabase — Cloud database & storage
+- Google Gemini 2.5
+- Stripe Connect
+- Twilio API
+- Supabase
 
 **Containerization**
-- Docker — Container runtime
-- Docker Compose v3.9 — Orchestration
-- Alpine Linux — Minimal base images
-- Nginx — Reverse proxy & static serving
+- Docker
+- Docker Compose v3.9
+- Alpine Linux
+- Nginx
 
-**API Documentation**
-- OpenAPI 3.0 — API specification
-- Swagger UI — Interactive documentation
+**Documentation**
+- OpenAPI 3.0
+- Swagger UI
 
-</div>
+</td>
 
-<div style="padding: 2rem; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border-radius: 12px; color: white;">
+<td style="width: 50%; padding: 20px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); border: 2px solid #fa709a; border-radius: 12px; color: white; vertical-align: top;">
 
 ### 🚀 DevOps & Development
 
-**Version Control & Collaboration**
-- Git — Distributed version control
-- GitHub — Repository hosting & CI/CD
+**Version Control**
+- Git
+- GitHub
 
 **Package Management**
-- npm — Frontend dependencies
-- pip — Python package manager
-- pyproject.toml — Python project config
-- setuptools — Python build system
+- npm
+- pip
+- pyproject.toml
+- setuptools
 
 **Build & Compilation**
-- TypeScript Compiler — Type checking
-- Vite Build System — Frontend bundling
-- npm scripts — Task automation
+- TypeScript Compiler
+- Vite Build System
+- npm scripts
 
-**Environment & Configuration**
-- dotenv (.env files) — Configuration management
-- .env.example — Documentation template
+**Environment**
+- dotenv (.env)
+- .env.example
 
 **Process Management**
-- Celery Worker — Background task execution
-- Celery Beat — Scheduled task runner
-- Uvicorn — ASGI development server
+- Celery Worker
+- Celery Beat
+- Uvicorn
 
 **CI/CD Pipeline**
-- GitHub Actions — Workflow automation
-- Docker Build — Container building
-- Automated Testing — Quality assurance
+- GitHub Actions
+- Docker Build
+- Quality Assurance
 
 **Code Quality**
-- Autoprefixer — CSS vendor prefixes
-- PostCSS — CSS processing pipeline
-- Hot Module Replacement (HMR) — Fast development
+- Autoprefixer
+- PostCSS
+- HMR
 
-</div>
+</td>
 
-</div>
+</tr></table>
 
 ---
 
