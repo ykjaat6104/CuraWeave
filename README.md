@@ -39,13 +39,13 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
 
 ## 🏗️ Tech Stack
 
-<table style="width: 100%; border-collapse: collapse;">
+<table width="100%">
   <tr>
-    <th align="left" width="50%">Frontend</th>
-    <th align="left" width="50%">Backend</th>
+    <th align="center" width="50%"><h3>Frontend</h3></th>
+    <th align="center" width="50%"><h3>Backend</h3></th>
   </tr>
   <tr>
-    <td valign="top">
+    <td valign="top" style="padding: 10px;">
       <ul>
         <li><strong>Framework:</strong> React 18.3.1 + Vite</li>
         <li><strong>Language:</strong> TypeScript 5.2.2</li>
@@ -58,7 +58,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
         <li><strong>Date Utils:</strong> date-fns 3.6.0</li>
       </ul>
     </td>
-    <td valign="top">
+    <td valign="top" style="padding: 10px;">
       <ul>
         <li><strong>Framework:</strong> FastAPI 0.111.0+</li>
         <li><strong>Language:</strong> Python 3.11+</li>
@@ -72,11 +72,11 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
     </td>
   </tr>
   <tr>
-    <th align="left">Infrastructure</th>
-    <th align="left">DevOps</th>
+    <th align="center"><h3>Infrastructure</h3></th>
+    <th align="center"><h3>DevOps</h3></th>
   </tr>
   <tr>
-    <td valign="top">
+    <td valign="top" style="padding: 10px;">
       <ul>
         <li><strong>Database:</strong> PostgreSQL 16</li>
         <li><strong>Cloud DB:</strong> Supabase</li>
@@ -86,7 +86,7 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
         <li><strong>Storage:</strong> Supabase Storage</li>
       </ul>
     </td>
-    <td valign="top">
+    <td valign="top" style="padding: 10px;">
       <ul>
         <li><strong>Containerization:</strong> Docker + Compose</li>
         <li><strong>Web Server:</strong> Nginx</li>
@@ -98,17 +98,6 @@ Built with performance and scalability in mind, CuraWeave uses **FastAPI** for h
     </td>
   </tr>
 </table>
-
-**CI/CD & Quality**
-- GitHub Actions
-- Docker Build
-- Autoprefixer
-- PostCSS
-
-        </td>
-    </tr>
-</table>
-
 ---
 
 ## 🚀 Getting Started
