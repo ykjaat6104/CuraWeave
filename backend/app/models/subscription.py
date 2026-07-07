@@ -1,6 +1,6 @@
 import uuid
 from sqlalchemy import Column, String, DateTime, DECIMAL, Integer, Enum, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID
+from app.database import UUID
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 from app.database import Base
@@ -25,7 +25,7 @@ class Subscription(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     clinic_id = Column(UUID(as_uuid=True), ForeignKey("clinics.id"), nullable=False)
     plan_id = Column(UUID(as_uuid=True), ForeignKey("subscription_plans.id"), nullable=False)
-    stripe_customer_id = Column(String(255))
+    gateway_customer_id = Column(String(255))
     status = Column(Enum("active", "canceled", "trial", name="subscription_status"), default="trial")
     current_period_start = Column(DateTime(timezone=True))
     current_period_end = Column(DateTime(timezone=True))
