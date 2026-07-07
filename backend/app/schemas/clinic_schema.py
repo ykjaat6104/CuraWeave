@@ -11,6 +11,7 @@ class ClinicCreate(BaseModel):
     address: Optional[str] = None
     owner_name: str
     owner_password: str
+    role: str = "admin"
 
 
 class ClinicResponse(BaseModel):
@@ -40,3 +41,21 @@ class TokenResponse(BaseModel):
     access_token: str
     token_type: str = "bearer"
     user: dict
+
+
+class ForgotPasswordRequest(BaseModel):
+    email: EmailStr
+
+
+class ResetPasswordRequest(BaseModel):
+    token: str
+    new_password: str
+
+
+class UserProfileUpdate(BaseModel):
+    name: Optional[str] = None
+
+
+class PasswordChangeRequest(BaseModel):
+    old_password: str
+    new_password: str

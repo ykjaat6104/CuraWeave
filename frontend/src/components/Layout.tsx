@@ -1,23 +1,24 @@
-import { Outlet, NavLink, useNavigate, Link } from 'react-router-dom'
+import { Outlet, NavLink, useNavigate, useLocation } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import {
-  LayoutDashboard, Users, Calendar, Megaphone, BrainCircuit,
-  MessageSquare, Receipt, LogOut, HeartPulse
+  LayoutDashboard, Users, Calendar, ClipboardList,
+  MessageSquare, Settings, LogOut, HeartPulse, FileText
 } from 'lucide-react'
 
 const navItems = [
-  { to: '/doctor/dashboard', icon: LayoutDashboard, label: 'Overview' },
-  { to: '/doctor/patients', icon: Users, label: 'Patients' },
+  { to: '/doctor/dashboard', icon: LayoutDashboard, label: 'Morning Rounds' },
+  { to: '/doctor/patients', icon: Users, label: 'Ward Book' },
   { to: '/doctor/appointments', icon: Calendar, label: 'Schedule' },
-  { to: '/doctor/campaigns', icon: Megaphone, label: 'Campaigns' },
-  { to: '/doctor/triage', icon: BrainCircuit, label: 'AI Triage' },
-  { to: '/doctor/messages', icon: MessageSquare, label: 'Messages' },
-  { to: '/doctor/billing', icon: Receipt, label: 'Billing' },
+  { to: '/doctor/triage', icon: ClipboardList, label: 'Triage Desk' },
+  { to: '/doctor/ehr', icon: FileText, label: 'EHR Room' },
+  { to: '/doctor/messages', icon: MessageSquare, label: 'Wire Messages' },
+  { to: '/doctor/profile', icon: Settings, label: 'Credentials' },
 ]
 
 export default function Layout() {
   const { user, logout } = useAuthStore()
   const navigate = useNavigate()
+  const location = useLocation()
   const displayName = user?.name || user?.full_name || 'Doctor'
 
   const handleLogout = () => {
