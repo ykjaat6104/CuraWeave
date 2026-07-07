@@ -12,6 +12,10 @@ import PatientDashboardPage from './pages/PatientDashboardPage'
 import PatientAppointmentsPage from './pages/PatientAppointmentsPage'
 import PatientDoctorsPage from './pages/PatientDoctorsPage'
 import PatientTriagePage from './pages/PatientTriagePage'
+import PatientHealthWalletPage from './pages/PatientHealthWalletPage'
+import PatientBillingPage from './pages/PatientBillingPage'
+import PatientMessagesPage from './pages/PatientMessagesPage'
+import PatientProfilePage from './pages/PatientProfilePage'
 import DashboardPage from './pages/DashboardPage'
 import PatientsPage from './pages/PatientsPage'
 import AppointmentsPage from './pages/AppointmentsPage'
@@ -74,7 +78,10 @@ export default function App() {
           <Route path="appointments" element={<PatientAppointmentsPage />} />
           <Route path="doctors" element={<PatientDoctorsPage />} />
           <Route path="triage" element={<PatientTriagePage />} />
-          <Route path="messages" element={<div className="text-white p-6">Messages Feature Coming Soon</div>} />
+          <Route path="messages" element={<PatientMessagesPage />} />
+          <Route path="health" element={<PatientHealthWalletPage />} />
+          <Route path="billing" element={<PatientBillingPage />} />
+          <Route path="profile" element={<PatientProfilePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

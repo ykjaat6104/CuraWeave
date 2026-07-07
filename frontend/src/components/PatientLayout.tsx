@@ -1,15 +1,18 @@
 import { Outlet, NavLink, useNavigate } from 'react-router-dom'
 import { useAuthStore } from '../store/authStore'
 import {
-  LayoutDashboard, Calendar, MessageSquare, LogOut, User, Stethoscope, Brain
+  LayoutDashboard, Calendar, MessageSquare, LogOut, User, Users, Brain, Settings, HeartPulse, Receipt
 } from 'lucide-react'
 
 const navItems = [
-  { to: '/patient/dashboard', icon: LayoutDashboard, label: 'Overview' },
-  { to: '/patient/appointments', icon: Calendar, label: 'Appointments' },
-  { to: '/patient/doctors', icon: Stethoscope, label: 'Doctors' },
-  { to: '/patient/triage', icon: Brain, label: 'AI Triage' },
-  { to: '/patient/messages', icon: MessageSquare, label: 'Messages' },
+  { to: '/patient/dashboard', icon: LayoutDashboard, label: 'My Hub' },
+  { to: '/patient/appointments', icon: Calendar, label: 'My Visits' },
+  { to: '/patient/doctors', icon: Users, label: 'Care Team' },
+  { to: '/patient/triage', icon: Brain, label: 'Triage Panel' },
+  { to: '/patient/messages', icon: MessageSquare, label: 'Inbox' },
+  { to: '/patient/health', icon: HeartPulse, label: 'Health Room' },
+  { to: '/patient/billing', icon: Receipt, label: 'My Subscriptions' },
+  { to: '/patient/profile', icon: Settings, label: 'Profile' },
 ]
 
 export default function PatientLayout() {
