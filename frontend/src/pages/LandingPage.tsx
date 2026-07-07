@@ -32,7 +32,7 @@ const LandingPage = () => {
               <div>
                 <h2 className="text-3xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors">Admin Portal</h2>
                 <p className="text-slate-400 text-base leading-relaxed">
-                  For doctors, administrators, and staff
+                  For doctors and administrators
                 </p>
               </div>
               <div className="mt-4 px-4 py-2 bg-purple-500/10 text-purple-300 text-sm font-medium rounded-full border border-purple-500/30 group-hover:bg-purple-500 group-hover:text-white transition-all">
