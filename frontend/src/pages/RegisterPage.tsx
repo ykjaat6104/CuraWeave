@@ -2,12 +2,21 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { authApi } from '../services/api'
 import {
-  User, Mail, Phone, Lock, Hash, Hospital, Activity, Check, ArrowRight,
-  ShieldCheck, BrainCircuit, Calendar, MessageSquare
+  Mail, Lock, Hospital, Activity, ArrowRight, User,
+  ShieldCheck, BrainCircuit, Calendar, MessageSquare, Shield, Stethoscope
 } from 'lucide-react'
 import { Toaster, toast } from 'react-hot-toast'
+import PhoneInput from '../components/PhoneInput'
+
+type Role = 'admin' | 'doctor'
+
+const ROLE_CHIPS: { key: Role; label: string; icon: any; activeClass: string }[] = [
+  { key: 'admin', label: 'Admin', icon: Shield, activeClass: 'bg-indigo-500/15 text-indigo-300 border-indigo-500/30' },
+  { key: 'doctor', label: 'Doctor', icon: Stethoscope, activeClass: 'bg-purple-500/15 text-purple-300 border-purple-500/30' },
+]
 
 export default function RegisterPage() {
+  const [selectedRole, setSelectedRole] = useState<Role>('admin')
   const [formData, setFormData] = useState({
     clinicName: '',
     fullName: '',
@@ -22,7 +31,8 @@ export default function RegisterPage() {
   const navigate = useNavigate()
 
    const getErrorMessage = (err: any, fallback: string) => {
-      const detail = err?.response?.data?.detail
+      const data = err?.response?.data
+      const detail = data?.detail || data?.error?.message
       if (typeof detail === 'string') return detail
       if (Array.isArray(detail)) {
          const first = detail[0]
@@ -47,6 +57,7 @@ export default function RegisterPage() {
             phone: formData.phone,
             owner_name: formData.fullName,
             owner_password: formData.password,
+            role: selectedRole,
       })
          toast.success('Registration successful! Please sign in.')
       setTimeout(() => navigate('/doctor/login'), 2000)
@@ -119,14 +130,32 @@ export default function RegisterPage() {
          >
         <div className="w-full max-w-2xl space-y-8">
             <div className="text-center lg:text-left">
-               <h2 className="text-3xl font-bold text-white mb-2">Create your account</h2>
-               <p className="text-slate-400">Get started with your free 14-day trial.</p>
-            </div>
+                <h2 className="text-3xl font-bold text-white mb-2">Create your account</h2>
+                <p className="text-slate-400">Choose your role and get started.</p>
+             </div>
+
+             {/* Role Chiplets */}
+             <div className="flex gap-2">
+               {ROLE_CHIPS.map(({ key, label, icon: Icon, activeClass }) => (
+                 <button
+                   key={key}
+                   type="button"
+                   onClick={() => setSelectedRole(key)}
+                   className={`flex-1 flex flex-col items-center gap-1.5 p-3 rounded-xl border text-sm transition-all duration-200 ${
+                     selectedRole === key
+                       ? activeClass
+                       : 'bg-zinc-900/60 border-zinc-800 text-slate-500 hover:text-slate-300 hover:border-zinc-700'
+                   }`}
+                 >
+                   <Icon size={20} className={selectedRole === key ? '' : 'text-slate-600'} />
+                   <span className="text-xs font-medium">{label}</span>
+                 </button>
+               ))}
+             </div>
 
             {error && (
-              <div className="bg-red-500/10 border border-red-500/20 rounded-xl p-4 flex items-center gap-3 text-red-500 text-sm">
-                <ShieldCheck size={18} />
-                <span>{error}</span>
+              <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-3 text-amber-400 text-sm">
+                {error}
               </div>
             )}
 
@@ -199,21 +228,12 @@ export default function RegisterPage() {
                            </div>
                         </div>
                         <div className="space-y-2">
-                           <label className="text-sm font-medium text-slate-300">Phone Number</label>
-                           <div className="relative">
-                              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
-                                 <Phone size={18} />
-                              </div>
-                              <input
-                                 name="phone"
-                                 type="tel"
-                                 required
-                                 className="w-full pl-10 pr-4 py-2.5 bg-zinc-900 border border-zinc-700 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-200 placeholder-slate-600 transition-all outline-none"
-                                 placeholder="+1 (555) 000-0000"
-                                 value={formData.phone}
-                                 onChange={handleInputChange}
-                              />
-                           </div>
+                           <PhoneInput
+                             value={formData.phone}
+                             onChange={(val) => setFormData({ ...formData, phone: val })}
+                             required
+                             accentColor="purple"
+                           />
                         </div>
                         <div className="space-y-2 col-span-2">
                            <label className="text-sm font-medium text-slate-300">Email Address</label>
@@ -238,16 +258,17 @@ export default function RegisterPage() {
                               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
                                  <Lock size={18} />
                               </div>
-                              <input
-                                 name="password"
-                                 type="password"
-                                 required
-                                 className="w-full pl-10 pr-4 py-2.5 bg-zinc-900 border border-zinc-700 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-200 placeholder-slate-600 transition-all outline-none"
-                                 placeholder="Min. 8 characters"
-                                 value={formData.password}
-                                 onChange={handleInputChange}
-                              />
+                               <input
+                                  name="password"
+                                  type="password"
+                                  required
+                                  className="w-full pl-10 pr-4 py-2.5 bg-zinc-900 border border-zinc-700 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 text-slate-200 placeholder-slate-600 transition-all outline-none"
+                                  placeholder="Min. 8 characters"
+                                  value={formData.password}
+                                  onChange={handleInputChange}
+                               />
                            </div>
+                           <p className="text-xs text-slate-500">Requires: uppercase, lowercase, digit, and a special character (!&#64;#$%^&amp;*)</p>
                         </div>
                         <div className="space-y-2">
                            <label className="text-sm font-medium text-slate-300">Confirm Password</label>

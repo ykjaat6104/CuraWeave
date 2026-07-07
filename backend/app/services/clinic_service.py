@@ -19,12 +19,16 @@ async def create_clinic(db: AsyncSession, data: ClinicCreate) -> Clinic:
     db.add(clinic)
     await db.flush()
 
+    role_map = {
+        "admin": UserRole.ADMIN,
+        "doctor": UserRole.DOCTOR,
+    }
     owner = User(
         clinic_id=clinic.id,
         email=data.email,
         password_hash=get_password_hash(data.owner_password),
         name=data.owner_name,
-        role=UserRole.ADMIN,
+        role=role_map.get(data.role, UserRole.ADMIN),
     )
     db.add(owner)
     await db.commit()
