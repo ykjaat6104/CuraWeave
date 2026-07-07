@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { aiApi } from '../services/api'
 import toast from 'react-hot-toast'
 import { Brain, Send, AlertTriangle, CheckCircle, AlertCircle, Zap, Loader2, Activity } from 'lucide-react'
+import MedicalDisclaimer from '../components/MedicalDisclaimer'
 
 interface TriageResult {
   urgency: string
@@ -232,6 +233,8 @@ e.g. 'I have been having chest pain and shortness of breath for the past 2 hours
           </div>
         )}
       </div>
+
+      <MedicalDisclaimer />
     </div>
   )
 }

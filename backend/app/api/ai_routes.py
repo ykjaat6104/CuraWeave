@@ -1,14 +1,20 @@
-from fastapi import APIRouter, Depends, HTTPException
+import json
+import logging
+
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.utils.auth import get_current_user
+from app.utils.features import require_feature
 from app.models.user import User
 from app.models.triage import TriageUrgency
 from app.schemas.appointment_schema import TriageRequest, TriageResponse
-from app.ai.langgraph_workflow import run_triage, run_conversation, generate_campaign_message
+from app.ai.langgraph_workflow import run_triage, run_triage_stream, run_conversation, generate_campaign_message
 from app.services.triage_service import save_triage_log, get_triage_logs
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/ai", tags=["AI"])
 
 
@@ -16,7 +22,8 @@ router = APIRouter(prefix="/ai", tags=["AI"])
 async def run_ai_triage(
     request: TriageRequest,
     db: AsyncSession = Depends(get_db),
-    current_user: User = Depends(get_current_user)
+    current_user: User = Depends(get_current_user),
+    _feature: User = Depends(require_feature("ai_triage")),
 ):
     result = await run_triage(
         clinic_id=str(current_user.clinic_id),
@@ -41,6 +48,69 @@ async def run_ai_triage(
         symptoms=result["symptoms"],
         recommendation=result["response"],
         action=result["action"]
+    )
+
+
+@router.post("/triage/stream")
+async def run_ai_triage_stream(
+    request: TriageRequest,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+    _feature: User = Depends(require_feature("ai_triage")),
+):
+    async def event_generator():
+        full_response = ""
+        final_data = {}
+
+        async for event in run_triage_stream(
+            clinic_id=str(current_user.clinic_id),
+            patient_message=request.message,
+            patient_id=str(request.patient_id) if request.patient_id else None,
+        ):
+            yield event
+
+            if event.startswith("event: token"):
+                for line in event.split("\n"):
+                    if line.startswith("data: "):
+                        try:
+                            data = json.loads(line[6:])
+                            if data.get("type") == "token":
+                                full_response += data.get("token", "")
+                        except json.JSONDecodeError:
+                            pass
+
+            if event.startswith("event: done"):
+                for line in event.split("\n"):
+                    if line.startswith("data: "):
+                        try:
+                            final_data = json.loads(line[6:])
+                        except json.JSONDecodeError:
+                            pass
+
+        if final_data:
+            urgency_map = {
+                "low": TriageUrgency.LOW,
+                "medium": TriageUrgency.MEDIUM,
+                "high": TriageUrgency.HIGH,
+            }
+            urgency = urgency_map.get(final_data.get("urgency", ""), TriageUrgency.MEDIUM)
+            await save_triage_log(
+                db=db,
+                clinic_id=current_user.clinic_id,
+                patient_id=request.patient_id,
+                symptoms=", ".join(final_data.get("symptoms", [])),
+                urgency_level=urgency,
+                ai_response=full_response or final_data.get("full_response", ""),
+            )
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no",
+        },
     )
 
 
